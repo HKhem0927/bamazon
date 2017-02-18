@@ -69,11 +69,20 @@ function purchase() {
 
                         console.log("Thank you for shopping at Bamazon! Please visit us again soon.")
 
-                        disconnect();
+                        
                     });
 
+                    
+               connection.query("INSERT INTO sales (product_id, quantity_purchased) VALUES (" + res.item + ", " + res.quantity + " )", function(err, res) { 
+                        
+                        if (err) return console.log(err);
 
+                         disconnect();
+            });
+
+               
             }
+
         })
     })
 }
